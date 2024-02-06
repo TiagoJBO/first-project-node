@@ -1,8 +1,10 @@
-const express = require('express')
-const uuid = require('uuid')
-const port = 3000
+import  express  from 'express'
+import {v4} from 'uuid'
+import cors from 'cors'
+const port = 3005
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 
 /*
@@ -40,7 +42,7 @@ app.post('/users', (request, response) => {
     const { name, age } = request.body
 
 
-    const user = { id: uuid.v4(), name, age, }
+    const user = { id: v4(), name, age, }
 
     users.push(user)
 
@@ -72,7 +74,7 @@ app.delete('/users/:id', checkUserId, (request, response) => {
 
 
 
-app.listen(3000, () => {
+app.listen(3005, () => {
     console.log(`🚀 Server started on port ${port} 🚀`)
 })
 
